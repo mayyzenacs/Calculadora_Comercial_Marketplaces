@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
+from mode import *
 
 root = Tk()
 
@@ -45,15 +46,6 @@ class Apliccation():
         arg.widget.config(bg="#D3D3D3")
     def on_release(self, arg):
         arg.widget.config(bg="#FFFF00")
-
-    
-    ##BOTÃO DE CALCULO 
-    def buttons(self):
-        self.action_bt = Button(self.frame1, text="Calcular", bg="#DCDCDC", bd=0)
-        self.action_bt.place(relx=0.2, rely=0.67, relheight=0.25, relwidth=0.25)
-
-        self.action_bt.bind("<Button-1>", self.on_click)
-        self.action_bt.bind("<ButtonRelease-1>", self.on_click)
         
     ## DEFININDO BOTÃO DE LIMPEZA
     def del_button(self):
@@ -67,11 +59,11 @@ class Apliccation():
        
     ## DEFININDO DEMAIS BOTÕES
     def checkbutton(self): 
-        var = IntVar()
+        self.var = IntVar()
         self.check = Radiobutton(
                         self.frame1, 
                         text="20%", 
-                        variable=var, 
+                        variable=self.var, 
                         value=0, 
                         bd=0, 
                         highlightthickness=0, 
@@ -82,7 +74,7 @@ class Apliccation():
         self.check2 = Radiobutton(
                         self.frame1, 
                         text="10%", 
-                        variable=var, 
+                        variable=self.var, 
                         value=1, 
                         bd=0, 
                         highlightthickness=0, 
@@ -92,7 +84,8 @@ class Apliccation():
                         )
         self.check.place(relheight= 0.12 ,relwidth=0.22, relx=0.34, rely=0.19, anchor=CENTER)
         self.check2.place(relheight= 0.12 ,relwidth=0.22, relx=0.65, rely=0.19, anchor=CENTER)
-        
+
+
     ## ENTRADA QUE RECEBE O VALOR
     def entry(self):
         self.entrycalc = Entry(
@@ -102,6 +95,21 @@ class Apliccation():
                         )
         self.entrycalc.icursor(0)
         self.entrycalc.place(relheight= 0.1 ,relwidth=0.22, relx=0.5, rely=0.38, anchor=CENTER)
+        
+
+    # CHAMA O VALOR DO RATION BUTTON
+    def take(self):
+        option = self.var.get()
+        valor = self.entrycalc.get()
+        calc(option, valor)
+
+    ##BOTÃO DE CALCULO 
+    def buttons(self):
+        self.action_bt = Button(self.frame1, text="Calcular", bg="#DCDCDC", bd=0, command=self.take)
+        self.action_bt.place(relx=0.2, rely=0.67, relheight=0.25, relwidth=0.25)
+
+        self.action_bt.bind("<Button-1>", self.on_click)
+        self.action_bt.bind("<ButtonRelease-1>", self.on_click)
 
     ## LABEL QUE RETORNA O RESULTADO
     def label(self): 
@@ -117,3 +125,7 @@ class Apliccation():
 
 
 Apliccation()
+
+
+
+    
