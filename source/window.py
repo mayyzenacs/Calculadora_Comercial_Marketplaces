@@ -18,7 +18,7 @@ class Apliccation():
     
     ## DEFININDO FUNDO PRINCIPAL
     def screen(self):
-        self.root.title("Calculadora 25.001 Auto by Mayra Pereira")
+        self.root.title("Calculadora de Preço Comercial Auto by Mayra Pereira")
         self.root.configure(background= "#363636")
         self.root.geometry("480x450")
         self.root.resizable(False, False)
@@ -100,16 +100,17 @@ class Apliccation():
     # CHAMA O VALOR DO RATION BUTTON
     def take(self):
         option = self.var.get()
-        valor = self.entrycalc.get()
+        valor = self.entrycalc.get().replace(",",".")
         calc(option, valor)
 
     ##BOTÃO DE CALCULO 
     def buttons(self):
         self.action_bt = Button(self.frame1, text="Calcular", bg="#DCDCDC", bd=0, command=self.take)
-        self.action_bt.place(relx=0.2, rely=0.67, relheight=0.25, relwidth=0.25)
+        self.action_bt.place(relx=0.1, rely=0.56, relheight=0.25, relwidth=0.25)
 
+        #ARRUMAR POR ULTIMO !!!!!!!!!!!!!
         self.action_bt.bind("<Button-1>", self.on_click)
-        self.action_bt.bind("<ButtonRelease-1>", self.on_click)
+        self.action_bt.bind("<ButtonRelease-1>", self.on_release)
 
     ## LABEL QUE RETORNA O RESULTADO
     def label(self): 
@@ -118,10 +119,12 @@ class Apliccation():
                         self.frame1, 
                         textvariable=var,
                         relief=RAISED, 
-                        font="bold"
+                        bg="#4F4F4F",
+                        font=("verdana", 15, "bold"),
+                        bd = 0
                     )
-        var.set("PREÇO DE -> ")
-        label.place(relx=0.34, rely=0.78, relheight= 0.1 ,relwidth=0.29)
+        var.set("PREÇO DE")
+        label.place(relx=0.54, rely=0.45, relheight= 0.1 ,relwidth=0.29, anchor="nw")
 
 
 Apliccation()

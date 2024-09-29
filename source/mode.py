@@ -1,14 +1,25 @@
 
 
-def calc(option, value, percent= 25.001):
+def calc(option, value):
         if option == 1: 
+            try: 
+                valor_final = float(value)
+                if not isinstance(value, str):
+                    percent = 15.001
+                    
+                    percent = float(percent)
+                    de_por = percent * valor_final / 100
+                    var = de_por + valor_final
+                    print(f"{var:.2f}")
+            except ValueError:
+                 pass
+        else:  
+            percent = 25.001
             valor_final = float(value)
             percent = float(percent)
             de_por = percent * valor_final / 100
             var = de_por + valor_final
             print(f"{var:.2f}")
-        else:
-            print("20")
 
 
 # codigo antigo abaixo
