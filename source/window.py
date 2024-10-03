@@ -14,6 +14,7 @@ class Apliccation():
         self.checkbutton()
         self.label()
         self.entry()
+        self.copy_button()
         root.mainloop()
     
     ## DEFININDO FUNDO PRINCIPAL
@@ -87,7 +88,7 @@ class Apliccation():
                         self.frame1, 
                         text="35%", 
                         variable=self.var, 
-                        value=3, 
+                        value=2, 
                         bd=0, 
                         highlightthickness=0, 
                         bg="#4F4F4F", 
@@ -114,18 +115,32 @@ class Apliccation():
     def take(self):
         option = self.var.get()
         valor = self.entrycalc.get().replace(",",".")
-        test = calc(option, valor)
+        self.test = calc(option, valor)
 
         variavel = StringVar()
-        variavel.set(test)
-        print(test)
-        self.label2 = Label(self.frame1, textvariable = test, font=("verdana", 15, "bold"))
-        self.label2.place(relx=0.7, rely=0.65, relheight=0.25, relwidth=0.25)
+        variavel.set(self.test)
+        print(option)
+        self.label2 = Label(self.frame1, textvariable = variavel, font=("verdana", 15, "bold"))
+        self.label2.place(relx=0.25, rely=0.56, relheight=0.25, relwidth=0.30)
+
+    def copy_button(self):
+        texto_copiar = self.test
+        self.root.clipboard_clear()
+        self.root.clipboard_append(texto_copiar)
+
+        self.copy_bt = Button(self.frame1, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_button)
+        self.copy_bt.place(relx=0.035, rely=0.75, relheight=0.15, relwidth=0.15)
+        #self.copy_msg = Label(self.frame1, tex="")
+        #self.copy_msg.place(relx=0.5, rely=0.5, relheight=0.100, relwidth=0.100)
+
+        #self.copy_bt.bind("<Button-1>", lambda event: self.copy_msg.config(text=""))
+        #self.copy_bt.bind("<ButtonRelease-1>", lambda event: self.copy_msg.config(text=""))
+
 
     ##BOTÃO DE CALCULO 
     def buttons(self):
         self.action_bt = Button(self.frame1, text="Calcular", bg="#DCDCDC", bd=0, command=self.take)
-        self.action_bt.place(relx=0.1, rely=0.56, relheight=0.25, relwidth=0.25)
+        self.action_bt.place(relx=0.035, rely=0.56, relheight=0.15, relwidth=0.15)
 
         #ARRUMAR POR ULTIMO !!!!!!!!!!!!!
         self.action_bt.bind("<Button-1>", self.on_click)
@@ -143,7 +158,7 @@ class Apliccation():
                         bd = 0
                     )
         var.set("PREÇO DE")
-        label.place(relx=0.54, rely=0.45, relheight= 0.1 ,relwidth=0.29, anchor="nw")
+        label.place(relx=0.55, rely=0.45, relheight= 0.1 ,relwidth=0.29, anchor='ne')
 
 
 Apliccation()
