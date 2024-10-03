@@ -35,11 +35,12 @@ class Apliccation():
         self.frame1.place(relx=0.5, rely=0.59, relheight= 0.78,relwidth=0.95, anchor=CENTER)
 
         self.str = Label(self.frame1, text="Calculadora automática de preços comerciais para Marketplaces", bg="#4F4F4F", font=("verdana", 9, "bold"))
-        self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.027, anchor=CENTER)
+        self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.035, anchor=CENTER)
         self.inst = Label(self.frame1, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.inst.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.10, anchor=CENTER)
         self.instentry = Label(self.frame1, text="Preço final", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.instentry.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.28, anchor=CENTER)
+
 
     
     def on_click(self, arg):
@@ -82,8 +83,20 @@ class Apliccation():
                         activebackground="#4F4F4F", 
                         font=("verdana",14,"bold")
                         )
-        self.check.place(relheight= 0.12 ,relwidth=0.22, relx=0.34, rely=0.19, anchor=CENTER)
-        self.check2.place(relheight= 0.12 ,relwidth=0.22, relx=0.65, rely=0.19, anchor=CENTER)
+        self.check3 = Radiobutton(
+                        self.frame1, 
+                        text="35%", 
+                        variable=self.var, 
+                        value=3, 
+                        bd=0, 
+                        highlightthickness=0, 
+                        bg="#4F4F4F", 
+                        activebackground="#4F4F4F", 
+                        font=("verdana",14,"bold")
+                        )
+        self.check.place(relheight= 0.12 ,relwidth=0.22, relx=0.2, rely=0.19, anchor=CENTER)
+        self.check2.place(relheight= 0.12 ,relwidth=0.22, relx=0.5, rely=0.19, anchor=CENTER)
+        self.check3.place(relheight= 0.12 ,relwidth=0.22, relx=0.7, rely=0.19, anchor='w')
 
 
     ## ENTRADA QUE RECEBE O VALOR
@@ -101,7 +114,13 @@ class Apliccation():
     def take(self):
         option = self.var.get()
         valor = self.entrycalc.get().replace(",",".")
-        calc(option, valor)
+        test = calc(option, valor)
+
+        variavel = StringVar()
+        variavel.set(test)
+        print(test)
+        self.label2 = Label(self.frame1, textvariable = test, font=("verdana", 15, "bold"))
+        self.label2.place(relx=0.7, rely=0.65, relheight=0.25, relwidth=0.25)
 
     ##BOTÃO DE CALCULO 
     def buttons(self):

@@ -11,16 +11,24 @@ def calc(option, value):
                     de_por = percent * valor_final / 100
                     var = de_por + valor_final
                     print(f"{var:.2f}")
+                    return var
             except ValueError:
-                 pass
-        else:  
+                print("error")
+        elif option == 2:  
             percent = 25.001
             valor_final = float(value)
             percent = float(percent)
             de_por = percent * valor_final / 100
             var = de_por + valor_final
+            return var
+        else:
+            percent = 53.848
+            valor_final = float(value)
+            percent = float(percent)
+            de_por = percent * valor_final / 100
+            var = de_por + valor_final
             print(f"{var:.2f}")
-
+            return var
 
 # codigo antigo abaixo
 
