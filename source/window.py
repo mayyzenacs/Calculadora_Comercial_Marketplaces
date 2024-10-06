@@ -14,6 +14,7 @@ class Apliccation():
         self.checkbutton()
         self.label()
         self.entry()
+        self.take()
         self.copy_button()
         root.mainloop()
     
@@ -35,7 +36,12 @@ class Apliccation():
         self.frame1 = Frame(self.root, relief="solid", bg="#4F4F4F")
         self.frame1.place(relx=0.5, rely=0.59, relheight= 0.78,relwidth=0.95, anchor=CENTER)
 
-        self.str = Label(self.frame1, text="Calculadora automática de preços comerciais para Marketplaces", bg="#4F4F4F", font=("verdana", 9, "bold"))
+        self.str = Label(
+                        self.frame1, 
+                        text="Calculadora automática de preços comerciais para Marketplaces", 
+                        bg="#4F4F4F", 
+                        font=("verdana", 9, "bold")
+                        )
         self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.035, anchor=CENTER)
         self.inst = Label(self.frame1, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.inst.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.10, anchor=CENTER)
@@ -130,11 +136,12 @@ class Apliccation():
 
         self.copy_bt = Button(self.frame1, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_button)
         self.copy_bt.place(relx=0.035, rely=0.75, relheight=0.15, relwidth=0.15)
-        #self.copy_msg = Label(self.frame1, tex="")
-        #self.copy_msg.place(relx=0.5, rely=0.5, relheight=0.100, relwidth=0.100)
 
-        #self.copy_bt.bind("<Button-1>", lambda event: self.copy_msg.config(text=""))
-        #self.copy_bt.bind("<ButtonRelease-1>", lambda event: self.copy_msg.config(text=""))
+        self.copy_msg = Label(self.frame1, text="")
+        self.copy_msg.place(relx=0.2, rely=0.8, relheight=0.1, relwidth=0.4)
+
+        self.copy_bt.bind("<Button-1>", lambda: self.copy_msg.config(text="texto copiado"))
+        self.copy_bt.bind("<ButtonRelease-1>", lambda: self.copy_msg.config(text=""))
 
 
     ##BOTÃO DE CALCULO 
