@@ -18,6 +18,10 @@ def calc(option, value):
             percent_20 = float(percent_20)
             de_por = percent_20 * valor_final / 100
             var2 = de_por + valor_final
+            
+            different = round(var2 - valor_final, 2)
+            if different > 0.01:
+                var2 -= 0.01
             checker(0.20, var2)
             return f'{var2:.2f}'
         elif option == 2:

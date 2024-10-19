@@ -43,13 +43,6 @@ class Apliccation():
                         font=("verdana", 9, "bold")
                         )
         self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.035, anchor=CENTER)
-        self.choice = Label(self.frame_back, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
-        self.choice.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.10, anchor=CENTER)
-        self.result_text = Label(self.frame_back, text="Preço final", bg="#4F4F4F", font=("Verdana", 11, "bold"))
-        self.result_text.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.28, anchor=CENTER)
-        self.checker = Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 11, "bold"))
-        self.checker.place(relx=0.3, rely=0.4, relwidth=1, relheight=0.06, anchor="w")
-
     
     def on_click(self, arg):
         arg.widget.config(bg="#D3D3D3")
@@ -68,6 +61,9 @@ class Apliccation():
        
     ## DEFININDO DEMAIS BOTÕES
     def checkbutton(self): 
+        self.choice = Label(self.frame_back, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
+        self.choice.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.10, anchor=CENTER)
+
         self.var = IntVar()
         self.check = Radiobutton(
                         self.frame_back, 
@@ -109,6 +105,9 @@ class Apliccation():
 
     ## ENTRADA QUE RECEBE O VALOR
     def entry(self):
+        self.result_text = Label(self.frame_back, text="Preço final", bg="#4F4F4F", font=("Verdana", 11, "bold"))
+        self.result_text.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.28, anchor=CENTER)
+
         self.entrycalc = Entry(
                         self.frame_back, 
                         bd=0, 
@@ -122,12 +121,12 @@ class Apliccation():
     def take(self):
         option = self.var.get()
         valor = self.entrycalc.get().replace(",",".")
-        self.test = calc(option, valor)
+        self.return_result = calc(option, valor)
 
-        variavel = StringVar()
-        variavel.set(self.test)
+        result = StringVar()
+        result.set(self.return_result)
         print(option)
-        self.label2 = Label(self.frame_back, textvariable = variavel, font=("verdana", 15, "bold"))
+        self.label2 = Label(self.frame_back, textvariable = result, font=("verdana", 15, "bold"))
         self.label2.place(relx=0.25, rely=0.56, relheight=0.25, relwidth=0.30)        
 
     ##BOTÃO DE CALCULO 
@@ -152,11 +151,17 @@ class Apliccation():
                     )
         var.set("PREÇO DE")
         label.place(relx=0.55, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
+
+        self.checker = Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 11, "bold"))
+        self.checker.place(relx=0.3, rely=0.4, relwidth=1, relheight=0.06, anchor="w")
+        self.value_checker = Label(self.frame_back, text="Valor - Porcentagem", bg="#4F4F4F", font=("Verdana", 11, "bold"))
+        self.value_checker.place(relx=0.63, rely=0.49, relwidth=0.34, relheight=0.06, anchor="w")
+
     
     def copy_button(self):
-        texto_copiar = self.test
+        copy_test= self.return_result
         self.root.clipboard_clear()
-        self.root.clipboard_append(texto_copiar)
+        self.root.clipboard_append(copy_test)
 
         self.copy_bt = Button(self.frame_back, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_button)
         self.copy_bt.place(relx=0.069, rely=0.69, relheight=0.15, relwidth=0.15)
