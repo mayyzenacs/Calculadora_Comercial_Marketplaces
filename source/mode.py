@@ -1,7 +1,7 @@
 
 class Calculator():
     def __init__(self):
-        self.calc()
+        pass
 
     def calc(option, value):
         if value is None or value == '':
@@ -40,4 +40,6 @@ class Calculator():
 
     def checker(percent, var_value):
         check_value = (var_value * percent) - var_value
-    
+
+
+Calculator()
