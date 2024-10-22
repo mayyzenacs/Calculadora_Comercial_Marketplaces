@@ -152,6 +152,8 @@ class Apliccation():
         var.set("PREÇO DE")
         label.place(relx=0.55, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
 
+        self.checker = checker()
+
         self.checker = Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.checker.place(relx=0.3, rely=0.4, relwidth=1, relheight=0.06, anchor="w")
         self.value_checker = Label(self.frame_back, text="Valor - Porcentagem", bg="#4F4F4F", font=("Verdana", 11, "bold"))
