@@ -119,9 +119,10 @@ class Apliccation():
 
     # CHAMA O VALOR DO RATION BUTTON
     def take(self):
+        calc = Calculator()
         option = self.var.get()
         valor = self.entrycalc.get().replace(",",".")
-        self.return_result = Calculator.calc(option, valor)
+        self.return_result = calc.calc(option, valor)
 
         result = StringVar()
         result.set(self.return_result)
@@ -152,6 +153,9 @@ class Apliccation():
         var.set("PREÇO DE")
         label.place(relx=0.55, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
 
+        #checando = Calculator.checker()
+        
+
         self.checker = Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.checker.place(relx=0.3, rely=0.4, relwidth=1, relheight=0.06, anchor="w")
         self.value_checker = Label(self.frame_back, text="Valor - Porcentagem", bg="#4F4F4F", font=("Verdana", 11, "bold"))
@@ -174,7 +178,5 @@ class Apliccation():
 
 
 Apliccation()
-Calculator()
-
 
     
