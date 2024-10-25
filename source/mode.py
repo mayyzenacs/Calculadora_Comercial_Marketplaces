@@ -3,8 +3,8 @@ class Calculator():
     def __init__(self):
         self.valor_final = 0
         self.percent = 0
+        self.value = 0
         
-
     def calc(self, option, value):
         if value is None or value == '':
             return ''
@@ -16,6 +16,7 @@ class Calculator():
                 
                 self.percent = float(self.percent)
                 var1 = self.valor_final / 0.90
+                self.checker()
 
                 return f'{var1:.2f}'
             elif option == 1:  
@@ -32,8 +33,9 @@ class Calculator():
             elif option == 2:
                 self.percent = 53.848
                 self.percent = float(self.percent)
-                de_por = self.percent * self.valor_final / 100
-                var3 = de_por + self.valor_final
+                #de_por = self.percent * self.valor_final / 100
+                #var3 = de_por + self.valor_final
+                var3 = self.valor_final / 0.55
                 print(f"{var3:.2f}")
                 self.checker()
 
@@ -41,8 +43,9 @@ class Calculator():
         except ValueError:
             return "error"
 
+    @staticmethod
     def checker(self):
-        check_value = (self.valor_final * self.percent) - self.valor_final
+        check_value = (self.value * self.percent) - self.valor_final
         return print(check_value)
 
 

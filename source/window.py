@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
-from mode import *
+from mode import Calculator
 
 root = Tk()
 
@@ -119,10 +119,10 @@ class Apliccation():
 
     # CHAMA O VALOR DO RATION BUTTON
     def take(self):
-        calc = Calculator()
+        self.calc = Calculator()
         option = self.var.get()
         valor = self.entrycalc.get().replace(",",".")
-        self.return_result = calc.calc(option, valor)
+        self.return_result = self.calc.calc(option, valor)
 
         result = StringVar()
         result.set(self.return_result)
