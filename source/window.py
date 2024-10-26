@@ -1,6 +1,9 @@
 from tkinter import *
 from PIL import Image, ImageTk
 from mode import Calculator
+import base64
+import io
+from encoded_image import encoded_logo
 
 root = Tk()
 
@@ -16,6 +19,7 @@ class Apliccation():
         self.entry()
         self.take()
         self.copy_button()
+        self.logo()
         root.mainloop()
     
     ## DEFININDO FUNDO PRINCIPAL
@@ -25,9 +29,8 @@ class Apliccation():
         self.root.geometry("480x450")
         self.root.resizable(False, False)
 
-        self.background_image = Image.open("logo.png")
-        self.resized_bg = self.background_image.resize((260,200))
-        self.bg_image = ImageTk.PhotoImage(self.resized_bg)
+    def logo(self):
+        self.bg_image = PhotoImage(data=encoded_logo)
         self.bg_image_label = Label(self.root, image=self.bg_image, bd=0, bg="#000000")
         self.bg_image_label.place(relheight=0.20, relwidth=1, anchor=CENTER, relx=0.5, rely=0.1)
 

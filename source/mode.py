@@ -43,7 +43,6 @@ class Calculator():
         except ValueError:
             return "error"
 
-    @staticmethod
     def checker(self):
         check_value = (self.value * self.percent) - self.valor_final
         return print(check_value)
