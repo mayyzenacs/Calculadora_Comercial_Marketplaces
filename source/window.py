@@ -127,11 +127,15 @@ class Apliccation():
         valor = self.entrycalc.get().replace(",",".")
         self.return_result = self.calc.calc(option, valor)
 
+        self.checker_label(self.calc.checker())
+
         result = StringVar()
         result.set(self.return_result)
-        print(option)
         self.label2 = Label(self.frame_back, textvariable = result, font=("verdana", 15, "bold"))
         self.label2.place(relx=0.25, rely=0.56, relheight=0.25, relwidth=0.30)        
+        
+        self.offer1 = self.calc.offer(self.return_result)
+        print(self.offer1)
 
     ##BOTÃO DE CALCULO 
     def buttons(self):
@@ -155,14 +159,29 @@ class Apliccation():
                     )
         var.set("PREÇO DE")
         label.place(relx=0.55, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
-
-        #checando = Calculator.checker()
         
 
-        self.checker = Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 11, "bold"))
-        self.checker.place(relx=0.3, rely=0.4, relwidth=1, relheight=0.06, anchor="w")
-        self.value_checker = Label(self.frame_back, text="Valor - Porcentagem", bg="#4F4F4F", font=("Verdana", 11, "bold"))
-        self.value_checker.place(relx=0.63, rely=0.49, relwidth=0.34, relheight=0.06, anchor="w")
+        self.checker = Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 12, "bold"))
+        self.checker.place(relx=0.59, rely=0.49, relwidth=0.4, relheight=0.06, anchor="w")
+
+        self.value_checker = Label(self.frame_back, text="-3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
+        self.value_checker.place(relx=0.63, rely=0.69, relwidth=0.34, relheight=0.06, anchor="w")
+
+        
+
+        #self.offer_price = Label(self.frame_back, textvariable=self.offer1 , bg="#4F4F4F", font=("Verdana", 12, "bold"))
+        #self.offer_price.place(relx=0.63, rely=0.75, relwidth=0.34, relheight=0.06, anchor="w")
+
+
+
+
+    def checker_label(self, checker_value):
+        print(f"checado{checker_value}")
+        checker_result = ""
+        checker_result = StringVar()
+        checker_result.set(checker_value)
+        self.check_value = Label(self.frame_back, textvariable = checker_result, font=("verdana", 15, "bold"))
+        self.check_value.place(relx=0.69, rely=0.58, relwidth=0.2, relheight=0.1, anchor="w")
 
     
     def copy_button(self):

@@ -17,6 +17,7 @@ class Calculator():
                 self.percent = float(self.percent)
                 var1 = self.valor_final / 0.90
                 self.checker()
+                self.offer(var1)
 
                 return f'{var1:.2f}'
             elif option == 1:  
@@ -29,6 +30,7 @@ class Calculator():
                 if different > 0.01:
                     var2 -= 0.01
 
+                self.offer(var2)
                 return f'{var2:.2f}'
             elif option == 2:
                 self.percent = 53.848
@@ -38,6 +40,7 @@ class Calculator():
                 var3 = self.valor_final / 0.55
                 print(f"{var3:.2f}")
                 self.checker()
+                self.offer(var3)
 
                 return f'{var3:.2f}'
         except ValueError:
@@ -45,7 +48,10 @@ class Calculator():
 
     def checker(self):
         check_value = (self.value * self.percent) - self.valor_final
-        return print(check_value)
+        return check_value
+    
+    def offer(self, price):
+        return (price * 0.3) - price
 
 
 Calculator()
