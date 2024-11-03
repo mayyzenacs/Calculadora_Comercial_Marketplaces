@@ -19,6 +19,7 @@ class Apliccation():
         self.entry()
         self.take()
         self.copy_button()
+        self.offer_label()
         self.logo()
         root.mainloop()
     
@@ -134,8 +135,6 @@ class Apliccation():
         self.label2 = Label(self.frame_back, textvariable = result, font=("verdana", 15, "bold"))
         self.label2.place(relx=0.25, rely=0.56, relheight=0.25, relwidth=0.30)        
         
-        self.offer1 = self.calc.offer(self.return_result)
-        print(self.offer1)
 
     ##BOTÃO DE CALCULO 
     def buttons(self):
@@ -168,9 +167,11 @@ class Apliccation():
         self.value_checker.place(relx=0.63, rely=0.69, relwidth=0.34, relheight=0.06, anchor="w")
 
         
-
-        #self.offer_price = Label(self.frame_back, textvariable=self.offer1 , bg="#4F4F4F", font=("Verdana", 12, "bold"))
-        #self.offer_price.place(relx=0.63, rely=0.75, relwidth=0.34, relheight=0.06, anchor="w")
+    def offer_label(self):
+        value = self.calc.offer()
+        print(f"valor{value}")
+        self.offer_price = Label(self.frame_back, textvariable=value , bg="#4F4F4F", font=("Verdana", 12, "bold"))
+        self.offer_price.place(relx=0.63, rely=0.75, relwidth=0.34, relheight=0.06, anchor="w")
 
 
 
