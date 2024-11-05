@@ -10,6 +10,7 @@ root = Tk()
 class Apliccation(): 
     def __init__(self):
         self.root = root
+        self.calc = Calculator()
         self.screen()
         self.frame()
         self.buttons()
@@ -19,6 +20,7 @@ class Apliccation():
         self.entry()
         self.take()
         self.copy_button()
+        self.copy_text()
         self.offer_label()
         self.logo()
         root.mainloop()
@@ -123,12 +125,12 @@ class Apliccation():
 
     # CHAMA O VALOR DO RATION BUTTON
     def take(self):
-        self.calc = Calculator()
         option = self.var.get()
         valor = self.entrycalc.get().replace(",",".")
         self.return_result = self.calc.calc(option, valor)
 
         self.checker_label(self.calc.checker())
+        self.offer_label()
 
         result = StringVar()
         result.set(self.return_result)
@@ -166,30 +168,20 @@ class Apliccation():
         self.value_checker = Label(self.frame_back, text="-3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.value_checker.place(relx=0.63, rely=0.69, relwidth=0.34, relheight=0.06, anchor="w")
 
-        
-    def offer_label(self):
-        value = self.calc.offer()
-        print(f"valor{value}")
-        self.offer_price = Label(self.frame_back, textvariable=value , bg="#4F4F4F", font=("Verdana", 12, "bold"))
-        self.offer_price.place(relx=0.63, rely=0.75, relwidth=0.34, relheight=0.06, anchor="w")
-
-
-
-
     def checker_label(self, checker_value):
-        print(f"checado{checker_value}")
         checker_result = ""
         checker_result = StringVar()
         checker_result.set(checker_value)
         self.check_value = Label(self.frame_back, textvariable = checker_result, font=("verdana", 15, "bold"))
         self.check_value.place(relx=0.69, rely=0.58, relwidth=0.2, relheight=0.1, anchor="w")
 
+    def offer_label(self):
+        offer_value = StringVar()
+        offer_value.set(f"{self.calc.offer():.2f}")
+        self.offer_price = Label(self.frame_back, textvariable=offer_value , bg="#4F4F4F", font=("Verdana", 12, "bold"))
+        self.offer_price.place(relx=0.63, rely=0.78, relwidth=0.34, relheight=0.06, anchor="w")
     
-    def copy_button(self):
-        copy_test= self.return_result
-        self.root.clipboard_clear()
-        self.root.clipboard_append(copy_test)
-
+    def copy_text(self):
         self.copy_bt = Button(self.frame_back, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_button)
         self.copy_bt.place(relx=0.069, rely=0.69, relheight=0.15, relwidth=0.15)
 
@@ -197,8 +189,17 @@ class Apliccation():
         self.copy_msg.place(relx=0.27, rely=0.82, relheight=0.05, relwidth=0.25)
 
         self.copy_bt.bind("<Button-1>", lambda arg: self.copy_msg.config(text="texto copiado"))
-        self.copy_bt.bind("<ButtonRelease-1>", lambda arg: self.root.after(10000, lambda: self.copy_msg.config(text="")))
+        self.copy_bt.bind("<ButtonRelease-1>", lambda arg: self.root.after(1000, lambda: self.copy_msg.config(text="")))
 
+
+    def copy_button(self):
+        copy = self.return_result
+        self.root.clipboard_clear()
+        self.root.clipboard_append(copy)
+    
+        
+
+        
 
 Apliccation()
 

@@ -17,7 +17,7 @@ class Calculator():
                 
                 self.percent = float(self.percent)
                 self.var = self.valor_final / 0.90
-                self.checker()
+                self.checker() 
 
                 return f'{self.var:.2f}'
             elif option == 1:  
@@ -46,7 +46,8 @@ class Calculator():
         return check_value
     
     def offer(self):
-        return self.var * 0.97
+        return (self.var * self.percent) - self.var
+    
 
 
-Calculator()
+
