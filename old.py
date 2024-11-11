@@ -1,4 +1,4 @@
-def price(valor, porcentagem=25.001):
+def price(valor, porcentagem=53.848):
     valor_final = float(valor)
     porcentagem = float(porcentagem)
     de_por = porcentagem * valor_final / 100

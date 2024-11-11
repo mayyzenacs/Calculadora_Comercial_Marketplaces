@@ -4,7 +4,6 @@ class Calculator():
         self.valor_final = 0
         self.percent = 0
         self.value = 0
-        self.var = 0
         
     def calc(self, option, value):
         if value is None or value == '':
@@ -13,40 +12,43 @@ class Calculator():
         try: 
             self.valor_final = float(value)
             if option == 0: 
-                self.percent = 0.10
+                self.percent = 10
                 
                 self.percent = float(self.percent)
-                self.var = self.valor_final / 0.90
+                self.var = self.valor_final / 0.9
                 self.checker() 
 
                 return f'{self.var:.2f}'
             elif option == 1:  
-                self.percent = 25.001
-                self.percent = float(self.percent)
-                de_por = self.percent * self.valor_final / 100
-                self.var = de_por + self.valor_final
+                self.percent = 20
                 
-                different = round(self.var - self.valor_final, 2)
-                if different > 0.01:
-                    self.var -= 0.01
+                self.percent2 = 25.001
+                self.percent2 = float(self.percent2)
+                de_por = self.percent2 * self.valor_final / 100
+                self.var = de_por + self.valor_final
+                print(self.var)
+                
 
                 return f'{self.var:.2f}'
             elif option == 2:
-                self.percent = 0.35
+                self.percent = 35
                 self.percent = float(self.percent)
-                self.var = self.valor_final / 0.55
+                self.var3 = self.valor_final / 0.65
                 self.checker()
 
-                return f'{self.var:.2f}'
+                return f'{self.var3:.2f}'
         except ValueError:
             return "error"
 
     def checker(self):
-        check_value = self.valor_final - (self.value * self.percent)
+        check_value = self.valor_final - (self.percent / 100)
         return check_value
     
     def offer(self):
         return (self.value * 0.03) 
+    
+
+
     
 
 
