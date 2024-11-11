@@ -13,7 +13,7 @@ class Calculator():
         try: 
             self.valor_final = float(value)
             if option == 0: 
-                self.percent = 15.001
+                self.percent = 0.10
                 
                 self.percent = float(self.percent)
                 self.var = self.valor_final / 0.90
@@ -32,7 +32,7 @@ class Calculator():
 
                 return f'{self.var:.2f}'
             elif option == 2:
-                self.percent = 53.848
+                self.percent = 0.35
                 self.percent = float(self.percent)
                 self.var = self.valor_final / 0.55
                 self.checker()
@@ -42,11 +42,11 @@ class Calculator():
             return "error"
 
     def checker(self):
-        check_value = (self.value * self.percent) - self.valor_final
+        check_value = self.valor_final - (self.value * self.percent)
         return check_value
     
     def offer(self):
-        return (self.var * self.percent) - self.var
+        return self.value - (self.value * 0.03) 
     
 
 
