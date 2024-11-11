@@ -46,7 +46,7 @@ class Calculator():
         return check_value
     
     def offer(self):
-        return self.value - (self.value * 0.03) 
+        return (self.value * 0.03) 
     
 
 
