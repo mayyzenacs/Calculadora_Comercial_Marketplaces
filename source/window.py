@@ -54,16 +54,6 @@ class Apliccation():
         arg.widget.config(bg="#858a80")
     def on_release(self, arg):
         arg.widget.config(bg="#4F4F4F")
-        
-    ## DEFININDO BOTÃO DE LIMPEZA
-    def del_button(self):
-        self.del_bt = Button(
-                        self.frame_back, 
-                        text="Clear", 
-                        bd=1, 
-                        bg="#4F4F4F"
-                        )
-        self.del_bt.place(relheight=0.09, relwidth=0.09,relx=0.5, rely=0.94, anchor=CENTER)
        
     ## DEFININDO DEMAIS BOTÕES
     def checkbutton(self): 
@@ -196,6 +186,21 @@ class Apliccation():
         copy = self.return_result
         self.root.clipboard_clear()
         self.root.clipboard_append(copy)
+
+      ## DEFININDO BOTÃO DE LIMPEZA
+    def del_button(self):
+        self.del_bt = Button(
+                        self.frame_back, 
+                        text="Clear", 
+                        bd=1, 
+                        bg="#4F4F4F",
+                        command= self.clear
+                        )
+        self.del_bt.place(relheight=0.09, relwidth=0.09,relx=0.5, rely=0.94, anchor=CENTER)
+
+    def clear(self):
+
+        self.entrycalc.delete(0, END)
     
     
 Apliccation()
