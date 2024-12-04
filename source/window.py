@@ -51,9 +51,9 @@ class Apliccation():
         self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.035, anchor=CENTER)
     
     def on_click(self, arg):
-        arg.widget.config(bg="#D3D3D3")
+        arg.widget.config(bg="#858a80")
     def on_release(self, arg):
-        arg.widget.config(bg="#FFFF00")
+        arg.widget.config(bg="#4F4F4F")
         
     ## DEFININDO BOTÃO DE LIMPEZA
     def del_button(self):
@@ -104,9 +104,9 @@ class Apliccation():
                         activebackground="#4F4F4F", 
                         font=("verdana",14,"bold")
                         )
-        self.check.place(relheight= 0.12 ,relwidth=0.22, relx=0.2, rely=0.19, anchor=CENTER)
-        self.check2.place(relheight= 0.12 ,relwidth=0.22, relx=0.5, rely=0.19, anchor=CENTER)
-        self.check3.place(relheight= 0.12 ,relwidth=0.22, relx=0.7, rely=0.19, anchor='w')
+        self.check.place(relheight= 0.12, relwidth=0.22, relx=0.2, rely=0.19, anchor=CENTER)
+        self.check2.place(relheight= 0.12, relwidth=0.22, relx=0.5, rely=0.19, anchor=CENTER)
+        self.check3.place(relheight= 0.12, relwidth=0.22, relx=0.7, rely=0.19, anchor='w')
 
 
     ## ENTRADA QUE RECEBE O VALOR
@@ -197,10 +197,7 @@ class Apliccation():
         self.root.clipboard_clear()
         self.root.clipboard_append(copy)
     
-        
-
-        
-
+    
 Apliccation()
 
     

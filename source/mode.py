@@ -23,11 +23,7 @@ class Calculator():
             elif option == 1:  
                 self.percent = 20
                 
-                self.percent2 = 25.001
-                #self.percent2 = float(self.percent2)
-                de_por = self.percent2 * self.valor_final / 100
-                self.var = de_por + self.valor_final
-                print(self.var)
+                self.var = self.valor_final / 0.8
                 
 
                 return f'{self.var:.2f}'
