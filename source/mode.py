@@ -1,11 +1,13 @@
 
+## DEFININDO CLASSE DE CÁLCULO
 class Calculator():
     def __init__(self):
         self.valor_final = 0
         self.percent = 0
         self.value = 0
         self.var = 0
-        
+    
+    ## FUNÇÃO QUE REALIZA O CALCULO PRINCIPAL
     def calc(self, option, value):
         if value is None or value == '':
             return ''

@@ -30,8 +30,10 @@ class Apliccation():
         self.root.title("Calculadora de Preço Comercial Auto by Mayra Pereira")
         self.root.configure(background= "#363636")
         self.root.geometry("480x450")
+        self.root.iconbitmap("icon.ico")
         self.root.resizable(False, False)
 
+    ## DEFININDO O LOGO NO TOPO
     def logo(self):
         self.bg_image = PhotoImage(data=encoded_logo)
         self.bg_image_label = Label(self.root, image=self.bg_image, bd=0, bg="#000000")
@@ -49,13 +51,8 @@ class Apliccation():
                         font=("verdana", 9, "bold")
                         )
         self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.035, anchor=CENTER)
-    
-    def on_click(self, arg):
-        arg.widget.config(bg="#858a80")
-    def on_release(self, arg):
-        arg.widget.config(bg="#4F4F4F")
        
-    ## DEFININDO DEMAIS BOTÕES
+    ## DEFININDO RADIO BUTTONS DE OPÇÃO
     def checkbutton(self): 
         self.choice = Label(self.frame_back, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.choice.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.10, anchor=CENTER)
@@ -99,7 +96,7 @@ class Apliccation():
         self.check3.place(relheight= 0.12, relwidth=0.22, relx=0.7, rely=0.19, anchor='w')
 
 
-    ## ENTRADA QUE RECEBE O VALOR
+    ## DEFININDO A ENTRADA QUE RECEBE O VALOR
     def entry(self):
         self.result_text = Label(self.frame_back, text="Preço final", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.result_text.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.28, anchor=CENTER)
@@ -116,26 +113,23 @@ class Apliccation():
     # CHAMA O VALOR DO RATION BUTTON
     def take(self):
         option = self.var.get()
-        valor = self.entrycalc.get().replace(",",".")
+        valor = self.entrycalc.get().replace(",",".")   
         self.return_result = self.calc.calc(option, valor)
 
         self.checker_label(self.calc.checker())
         self.offer_label()
 
+        ## POSICIONA O VALOR FINAL NO FRAME
         result = StringVar()
         result.set(self.return_result)
-        self.label2 = Label(self.frame_back, textvariable = result, font=("verdana", 15, "bold"))
-        self.label2.place(relx=0.25, rely=0.56, relheight=0.25, relwidth=0.30)        
+        self.label_return = Label(self.frame_back, textvariable = result, font=("verdana", 15, "bold"))
+        self.label_return.place(relx=0.25, rely=0.56, relheight=0.25, relwidth=0.30)        
         
 
-    ##BOTÃO DE CALCULO 
+    ## INSERINDO BOTÃO DE CALCULO 
     def buttons(self):
         self.action_bt = Button(self.frame_back, text="Calcular", bg="#DCDCDC", bd=0, command=self.take)
         self.action_bt.place(relx=0.069, rely=0.51, relheight=0.15, relwidth=0.15)
-
-        #ARRUMAR POR ULTIMO !!!!!!!!!!!!!
-        self.action_bt.bind("<Button-1>", self.on_click)
-        self.action_bt.bind("<ButtonRelease-1>", self.on_release)
 
     ## LABEL QUE RETORNA O RESULTADO
     def label(self): 
@@ -151,13 +145,15 @@ class Apliccation():
         var.set("PREÇO DE")
         label.place(relx=0.55, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
         
-
+        ## DEFINE O CHECADOR
         self.checker = Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.checker.place(relx=0.59, rely=0.49, relwidth=0.4, relheight=0.06, anchor="w")
 
+        ## DEFINE O TEXTO DE OFERTA
         self.value_checker = Label(self.frame_back, text="-3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.value_checker.place(relx=0.63, rely=0.69, relwidth=0.34, relheight=0.06, anchor="w")
 
+    ## DEFININDO LABEL DO CHECKER DE VALOR
     def checker_label(self, checker_value):
         checker_result = ""
         checker_result = StringVar()
@@ -165,12 +161,14 @@ class Apliccation():
         self.check_value = Label(self.frame_back, textvariable = checker_result, font=("verdana", 15, "bold"))
         self.check_value.place(relx=0.69, rely=0.58, relwidth=0.2, relheight=0.1, anchor="w")
 
+    ## DEFININDO LABEL DE OFERTA
     def offer_label(self):
         offer_value = StringVar()
         offer_value.set(f"{self.calc.offer():.2f}")
         self.offer_price = Label(self.frame_back, textvariable=offer_value , bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.offer_price.place(relx=0.63, rely=0.78, relwidth=0.34, relheight=0.06, anchor="w")
     
+    ## DEFININDO O BOTÃO DE COPIAR
     def copy_text(self):
         self.copy_bt = Button(self.frame_back, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_button)
         self.copy_bt.place(relx=0.069, rely=0.69, relheight=0.15, relwidth=0.15)
@@ -181,13 +179,13 @@ class Apliccation():
         self.copy_bt.bind("<Button-1>", lambda arg: self.copy_msg.config(text="texto copiado"))
         self.copy_bt.bind("<ButtonRelease-1>", lambda arg: self.root.after(1000, lambda: self.copy_msg.config(text="")))
 
-
+    ## FUNÇÃO DE USO DO BOTÃO COPIAR
     def copy_button(self):
         copy = self.return_result
         self.root.clipboard_clear()
         self.root.clipboard_append(copy)
 
-      ## DEFININDO BOTÃO DE LIMPEZA
+    ## DEFININDO BOTÃO DE LIMPEZA
     def del_button(self):
         self.del_bt = Button(
                         self.frame_back, 
@@ -198,9 +196,10 @@ class Apliccation():
                         )
         self.del_bt.place(relheight=0.09, relwidth=0.09,relx=0.5, rely=0.94, anchor=CENTER)
 
+    ## FUNÇÃO DO BOTÃO LIMPAR
     def clear(self):
-
         self.entrycalc.delete(0, END)
+        
     
     
 Apliccation()
