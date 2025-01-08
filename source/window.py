@@ -1,10 +1,8 @@
 
 ## IMPORTANDO BIBLIOTECAS IMPORTANTES
 from tkinter import *
-from PIL import Image, ImageTk
 from mode import Calculator
-import base64
-import io
+
 import os
 from encoded_image import encoded_logo
 
@@ -36,7 +34,7 @@ class Apliccation():
         self.root.title("Calculadora de Preço Comercial Auto by Mayra Pereira")
         self.root.configure(background= "#363636")
         self.root.geometry("480x450")
-        icon_path = "img\icon.png"
+        icon_path = "img/icon.png"
         if os.path.exists(icon_path):
             icon = PhotoImage(file=icon_path)
             self.root.iconphoto(True, icon)
