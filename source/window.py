@@ -34,13 +34,7 @@ class Apliccation():
         self.root.title("Calculadora de Preço Comercial Auto by Mayra Pereira")
         self.root.configure(background= "#363636")
         self.root.geometry("480x450")
-        icon_path = "img/icon.png"
-        if os.path.exists(icon_path):
-            icon = PhotoImage(file=icon_path)
-            self.root.iconphoto(True, icon)
-        else:
-            print(f"Ícone PNG não encontrado: {os.path.abspath(icon_path)}")
-        
+        self.root.iconbitmap(r"C:\Users\May\Documents\GitHub\25.001_Auto\source\img\icon.ico")
         self.root.resizable(False, False)
 
 
@@ -134,9 +128,9 @@ class Apliccation():
 
 
         ## POSICIONA O VALOR FINAL NO FRAME
-        result = StringVar()
-        result.set(self.return_result)
-        self.label_return = Label(self.frame_back, textvariable = result, font=("verdana", 15, "bold"))
+        self.result = StringVar()
+        self.result.set(self.return_result)
+        self.label_return = Label(self.frame_back, textvariable = self.result, font=("verdana", 15, "bold"))
         self.label_return.place(relx=0.25, rely=0.56, relheight=0.25, relwidth=0.30)        
         
 
@@ -174,17 +168,17 @@ class Apliccation():
     ## DEFININDO LABEL DO CHECKER DE VALOR
     def checker_label(self, checker_value):
         checker_result = ""
-        checker_result = StringVar()
-        checker_result.set(checker_value)
-        self.check_value = Label(self.frame_back, textvariable = checker_result, font=("verdana", 15, "bold"))
+        self.checker_result = StringVar()
+        self.checker_result.set(checker_value)
+        self.check_value = Label(self.frame_back, textvariable = self.checker_result, font=("verdana", 15, "bold"))
         self.check_value.place(relx=0.69, rely=0.58, relwidth=0.2, relheight=0.1, anchor="w")
 
 
     ## DEFININDO LABEL DE OFERTA
     def offer_label(self):
-        offer_value = StringVar()
-        offer_value.set(f"{self.calc.offer():.2f}")
-        self.offer_price = Label(self.frame_back, textvariable=offer_value , bg="#4F4F4F", font=("Verdana", 12, "bold"))
+        self.offer_value = StringVar()
+        self.offer_value.set(f"{self.calc.offer():.2f}")
+        self.offer_price = Label(self.frame_back, textvariable=self.offer_value , bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.offer_price.place(relx=0.63, rely=0.78, relwidth=0.34, relheight=0.06, anchor="w")
 
 
@@ -222,6 +216,10 @@ class Apliccation():
     ## FUNÇÃO DO BOTÃO LIMPAR
     def clear(self):
         self.entrycalc.delete(0, END)
+        self.checker_result.set("")
+        self.offer_value.set("")
+        self.result.set("")
+        
         
      
 Apliccation()
