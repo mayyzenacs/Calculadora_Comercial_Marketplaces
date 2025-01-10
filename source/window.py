@@ -2,8 +2,6 @@
 ## IMPORTANDO BIBLIOTECAS IMPORTANTES
 import tkinter as tk
 from mode import Calculator
-from PIL import Image
-import os
 from encoded_image import encoded_logo
 
 ## INICIALIZAÇÃO 
