@@ -30,5 +30,6 @@ Por exemplo: Caso o usuário queira colocar em seu produto o valor 39,9, ele ins
 
 ## Exemplo de uso
 
-![](https://imgur.com/4qLYVVb.gif)
+
+![](https://github.com/mayyzenacs/Calculadora_Comercial_Marketplaces/blob/main/source/img/howtouse.gif)
 
