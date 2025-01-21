@@ -4,7 +4,7 @@
 class Calculator():
 
     def __init__(self):
-        self.valor_final = 0
+        self.final_value = 0
         self.percent = 0
         self.value = 0
         self.var = 0
@@ -16,23 +16,23 @@ class Calculator():
             return ''
                 
         try: 
-            self.valor_final = float(value)
+            self.final_value = float(value)
 
             if option == 0: 
-                self.percent = 10 
-                self.var = self.valor_final / 0.9
-
-                return f'{self.var:.2f}'
+                self.percent = 15.001
+                percent = float(self.percent)
+                self.var = percent * self.final_value / 100
+                return f'{self.final_value + self.var:.2f}'
 
             elif option == 1:  
-                self.percent = 20
-                self.var = self.valor_final / 0.8
-
-                return f'{self.var:.2f}'
+                self.percent = 25.001
+                percent = float(self.percent)
+                self.var = percent * self.final_value / 100
+                return f'{self.final_value + self.var:.2f}'
 
             elif option == 2:
-                self.percent = 35
-                self.var = self.valor_final / 0.65
+                self.percent = 53.848
+                self.var = self.final_value / 0.65
 
                 return f'{self.var:.2f}'
 
@@ -44,12 +44,12 @@ class Calculator():
 
     ## FUNÇÃO QUE CHECA SE O CALCULO ESTÁ CORRETO
     def checker(self):
-        check_value = self.var * (1 - self.percent / 100)
-        return check_value
+        check_value = (self.var - self.final_value) - self.var
+        return abs(check_value)
     
     ## FUNÇÃO QUE CALCULO O VALOR PARA OFERTA MELI
     def offer(self):
-        return self.valor_final - (self.valor_final * 0.03) 
+        return self.final_value - (self.final_value * 0.03) 
     
 
 
