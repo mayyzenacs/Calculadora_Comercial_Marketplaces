@@ -31,8 +31,8 @@ class Calculator():
                 return f'{self.final_value + self.var:.2f}'
 
             elif option == 2:
-                descount = 1 - 0.35
-                var = self.final_value / descount
+                discount = 1 - 0.35
+                var = self.final_value / discount
                 rest = math.ceil(var * 100) / 100
                 
                 return rest
