@@ -68,7 +68,6 @@ class Calculator():
         )
         connection.commit()
         print("operação salva com sucesso no banco de dados")
-        connection.close()
 
 
 
