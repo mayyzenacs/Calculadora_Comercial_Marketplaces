@@ -117,7 +117,6 @@ class Apliccation():
         valor = self.entrycalc.get().replace(",",".")   
         self.return_result = self.calc.calc(option, valor)
 
-        self.checker_label(self.calc.checker())
         self.offer_label()
 
 
@@ -147,33 +146,18 @@ class Apliccation():
                     )
         var.set("PREÇO DE")
         label.place(relx=0.55, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
-        
-
-        ## DEFINE O CHECADOR
-        self.checker = tk.Label(self.frame_back, text="Checador", bg="#4F4F4F", font=("Verdana", 12, "bold"))
-        self.checker.place(relx=0.59, rely=0.49, relwidth=0.4, relheight=0.06, anchor="w")
-
 
         ## DEFINE O TEXTO DE OFERTA
         self.value_checker = tk.Label(self.frame_back, text="-3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
-        self.value_checker.place(relx=0.63, rely=0.69, relwidth=0.34, relheight=0.06, anchor="w")
-
-
-    ## DEFININDO LABEL DO CHECKER DE VALOR
-    def checker_label(self, checker_value):
-        checker_result = ""
-        self.checker_result = tk.StringVar()
-        self.checker_result.set(checker_value)
-        self.check_value = tk.Label(self.frame_back, textvariable = self.checker_result, font=("verdana", 15, "bold"))
-        self.check_value.place(relx=0.69, rely=0.58, relwidth=0.2, relheight=0.1, anchor="w")
+        self.value_checker.place(relx=0.62, rely=0.58, relwidth=0.34, relheight=0.06, anchor="w")
 
 
     ## DEFININDO LABEL DE OFERTA
     def offer_label(self):
         self.offer_value = tk.StringVar()
         self.offer_value.set(f"{self.calc.offer():.2f}")
-        self.offer_price = tk.Label(self.frame_back, textvariable=self.offer_value , bg="#4F4F4F", font=("Verdana", 12, "bold"))
-        self.offer_price.place(relx=0.63, rely=0.78, relwidth=0.34, relheight=0.06, anchor="w")
+        self.offer_price = tk.Label(self.frame_back, textvariable=self.offer_value, font=("Verdana", 12, "bold"))
+        self.offer_price.place(relx=0.62, rely=0.67, relwidth=0.31, relheight=0.07, anchor="w")
 
 
     ## DEFININDO O BOTÃO DE COPIAR
@@ -210,7 +194,6 @@ class Apliccation():
     ## FUNÇÃO DO BOTÃO LIMPAR
     def clear(self):
         self.entrycalc.delete(0, tk.END)
-        self.checker_result.set("")
         self.offer_value.set("")
         self.result.set("")
         
