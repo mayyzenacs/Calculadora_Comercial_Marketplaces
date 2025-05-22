@@ -4,7 +4,7 @@ import math
 class Calculator():
 
     def __init__(self):
-        self.float_value = 0
+        self.floatValue = 0
         self.percent = 0
         self.value = 0
         self.var = 0
@@ -16,7 +16,7 @@ class Calculator():
             return ''
         
         try: 
-            self.float_value = float(value)
+            self.floatValue = float(value)
 
             if option == 0: 
                 discount = 1 - 0.10
@@ -31,13 +31,35 @@ class Calculator():
             return "error"
 
         finally:
-            var = self.float_value / discount
+            var = self.floatValue / discount
             outcome = math.ceil(var * 100) / 100
             return outcome
     
     ## FUNÇÃO QUE CALCULO O VALOR PARA OFERTA MELI
     def offer(self):
-        return self.float_value - (self.float_value * 0.03) 
+        return self.floatValue - (self.floatValue * 0.03) 
+    
+
+    ## CÁLCULO DO ESTOQUE FULL POR SEMANA
+    def mathFull(self, fullOption, fullWeeks): 
+        if fullWeeks == '':
+            return ''
+        elif fullOption == 0: 
+            return('error')
+        
+
+        try:
+
+            fullVar = int(fullOption) * int(fullWeeks)
+            print(fullOption, fullWeeks)
+        
+        except ValueError:
+           return('error')
+        
+
+        finally:
+            return(fullVar)
+
     
 
 
