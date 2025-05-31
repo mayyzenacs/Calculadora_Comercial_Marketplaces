@@ -27,8 +27,8 @@ class Calculator():
             elif option == 2:
                 discount = 1 - 0.35
                 
-        except ValueError:
-            return "error"
+        except:
+            return " "
 
         finally:
             var = self.floatValue / discount
