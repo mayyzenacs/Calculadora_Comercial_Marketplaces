@@ -16,7 +16,7 @@ Por exemplo: Caso o usuário queira colocar em seu produto o valor 39,9, ele ins
 
 *O programa não possui licença o windows defender pode detectar um falso positivo, coloque ele nas exceções*
 
-![](https://imgur.com/U53r5Wu.png)
+![](https://imgur.com/U53r5Wu.xe)
 
 - **Campo 1:** Selecionar qual será a porcentagem de cálculo para desconto
 
@@ -31,5 +31,5 @@ Por exemplo: Caso o usuário queira colocar em seu produto o valor 39,9, ele ins
 ## Exemplo de uso
 
 
-![](https://github.com/mayyzenacs/Calculadora_Comercial_Marketplaces/blob/main/source/img/howtouse.gif)
+![](https://github.com/mayyzenacs/Calculadora_Comercial_Marketplaces/blob/main/source/img/howtouse.xe)
 
